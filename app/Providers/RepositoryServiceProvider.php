@@ -1,24 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
+use App\Contracts\Repositories\ApiClientRepositoryInterface;
+use App\Repositories\Eloquent\ApiClientRepository;
 use Illuminate\Support\ServiceProvider;
 
-class RepositoryServiceProvider extends ServiceProvider
+final class RepositoryServiceProvider extends ServiceProvider
 {
-    /**
-     * Register services.
-     */
     public function register(): void
     {
-        //
-    }
-
-    /**
-     * Bootstrap services.
-     */
-    public function boot(): void
-    {
-        //
+        $this->app->bind(
+            ApiClientRepositoryInterface::class,
+            ApiClientRepository::class,
+        );
     }
 }

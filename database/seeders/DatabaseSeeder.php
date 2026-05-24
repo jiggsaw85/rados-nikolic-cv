@@ -15,13 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             ApiClientSeeder::class,
-            CvProfileSeeder::class,
-            CvSkillSeeder::class,
-            CvExperienceSeeder::class,
-            CvProjectSeeder::class,
-            CvEducationSeeder::class,
-            CvCertificationSeeder::class,
-            CvKnowledgeResourceSeeder::class,
         ]);
     }
 }
