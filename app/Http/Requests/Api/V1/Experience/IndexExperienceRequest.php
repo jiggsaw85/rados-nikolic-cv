@@ -1,29 +1,39 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests\Api\V1\Experience;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class IndexExperienceRequest extends FormRequest
+final class IndexExperienceRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
         return [
-            //
+            'company' => [
+                'sometimes',
+                'string',
+                'max:150',
+            ],
+            'technology' => [
+                'sometimes',
+                'string',
+                'max:100',
+            ],
+            'current' => [
+                'sometimes',
+                'in:true,false,1,0',
+            ],
+            'sort' => [
+                'sometimes',
+                'in:sort_order,-sort_order,start_date,-start_date',
+            ],
         ];
     }
 }

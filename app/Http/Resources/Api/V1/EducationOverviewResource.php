@@ -1,19 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Resources\Api\V1;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class EducationOverviewResource extends JsonResource
+final class EducationOverviewResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>
-     */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'education' => EducationResource::collection($this->resource['education']),
+            'certifications' => CertificationResource::collection($this->resource['certifications']),
+        ];
     }
 }
