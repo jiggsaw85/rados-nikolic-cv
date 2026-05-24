@@ -1,17 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Education;
 use Illuminate\Database\Seeder;
 
-class CvEducationSeeder extends Seeder
+final class CvEducationSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        //
+        Education::query()->updateOrCreate(
+            [
+                'institution' => 'ETŠ Nikola Tesla',
+                'program' => 'IV',
+            ],
+            [
+                'location' => null,
+                'start_year' => 2000,
+                'end_year' => 2004,
+                'sort_order' => 10,
+            ],
+        );
     }
 }
